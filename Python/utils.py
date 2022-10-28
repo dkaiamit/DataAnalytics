@@ -101,3 +101,8 @@ def get_today_datetime(timezone, date=False):
     else:
         now_datetime = datetime.now(tz)
         return now_datetime
+
+def get_df_columns(df):
+    #input: takes a pandas.DataFrame type data.
+    #output: return a list of columns in df.
+    return df.columns
