@@ -28,7 +28,17 @@ def date_clean(incoming_date):
     else:
         if (incoming_date.isna()==True):
             return pd.NaT
-
+        
+        
+def connect_to_sqldb(host,user,password,database):
+        mydb = pymysql.connect(
+        host=host,
+        user=user,
+        password=password,
+        database=database
+        )
+        return mydb
+ 
 #fetch data from S3 db
 def fetch_file_from_s3(filepath_name,sheet_no,bucket_name,file_type): 
     s3_conn=create_s3_object()
