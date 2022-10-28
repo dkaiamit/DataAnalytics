@@ -2,6 +2,13 @@
 import pandas as pd
 import numpy as np
 
+def create_s3_object():    
+    creds = get_creds()
+    s3_conn=boto3.resource(service_name=creds['AWS_S3']['service_name'],
+                    region_name=creds['AWS_S3']['region_name'],
+                    aws_access_key_id=creds['AWS_S3']['aws_access_key_id'],
+                    aws_secret_access_key=creds['AWS_S3']['aws_secret_access_key'])   
+    return s3_conn
 
 #fetch data from S3 db
 def fetch_file_from_s3(filepath_name,sheet_no,bucket_name,file_type): 
