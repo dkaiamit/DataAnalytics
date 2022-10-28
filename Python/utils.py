@@ -38,6 +38,16 @@ def connect_to_sqldb(host,user,password,database):
         database=database
         )
         return mydb
+    
+
+def connect_to_postgres(database, host, port , user,password):
+    postgres_conn = psycopg2.connect(
+        "host='" + host + \
+        "' port="+ port +" user=" + user + \
+        " password=" + password + 
+        " dbname='" + database + "'"
+    )
+    return postgres_conn
  
 #fetch data from S3 db
 def fetch_file_from_s3(filepath_name,sheet_no,bucket_name,file_type): 
