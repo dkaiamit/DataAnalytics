@@ -10,6 +10,25 @@ def create_s3_object():
                     aws_secret_access_key=creds['AWS_S3']['aws_secret_access_key'])   
     return s3_conn
 
+def date_clean(incoming_date):
+    """Input:incoming_date (df['date_column'])
+    Output:datetime: datetime value
+    """
+    
+    if isinstance(incoming_date, datetime):
+        return incoming_date
+    elif incoming_date == None:
+        return pd.NaT
+    elif isinstance(incoming_date, str):
+        if  incoming_date == '0000-00-00 00:00:00':
+            return pd.NaT
+        else:
+            datetime_object = datetime.strptime(incoming_date, '%Y-%m-%d %H:%M:%S')
+            return datetime_object
+    else:
+        if (incoming_date.isna()==True):
+            return pd.NaT
+
 #fetch data from S3 db
 def fetch_file_from_s3(filepath_name,sheet_no,bucket_name,file_type): 
     s3_conn=create_s3_object()
