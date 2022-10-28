@@ -1,3 +1,8 @@
+#importing libraries
+import pandas as pd
+import numpy as np
+
+
 #fetch data from S3 db
 def fetch_file_from_s3(filepath_name,sheet_no,bucket_name,file_type): 
     s3_conn=create_s3_object()
@@ -13,3 +18,9 @@ def fetch_file_from_s3(filepath_name,sheet_no,bucket_name,file_type):
         return df
   else:
     return 0
+
+def get_df_rows(df):
+    #input: takes a pandas.DataFrame type data.
+    #output: return a integer with the number of rows.
+    return len(df.index)
+
