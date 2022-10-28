@@ -24,3 +24,17 @@ def get_df_rows(df):
     #output: return a integer with the number of rows.
     return len(df.index)
 
+
+def get_today_datetime(timezone, date=False):
+    #input:timezone (String) ist or utc,date: True or False(default)
+    #output:datetime: Returns datetime by default,date: Returns date if date=True
+    if timezone == 'ist':
+        tz = pytz.timezone('Asia/Kolkata')
+    elif timezone == "utc":
+        tz = pytz.timezone('UTC')
+    if date:
+        now_date = datetime.now(tz).date()
+        return now_date
+    else:
+        now_datetime = datetime.now(tz)
+        return now_datetime
