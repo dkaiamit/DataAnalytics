@@ -9,3 +9,9 @@ with [table name 2] AS ([query to fetch data]: ''' Select sample_column1,sample_
 ...
 ...
 Select [columns] from tablename1,tablename2 ...
+
+
+#Using SUBSTR
+SUBSTRING([string to be sliced], [start], [end]).
+Example: SELECT SUBSTR('Khushkuu',1,4) it will fetch first 4 letters of string khushkuu
+
