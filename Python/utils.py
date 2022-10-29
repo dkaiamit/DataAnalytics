@@ -65,28 +65,10 @@ def fetch_file_from_s3(filepath_name,sheet_no,bucket_name,file_type):
   else:
     return 0
 
-def fetch_data_from_db(query,database="reporting"):
-    """
-    Input: query: Sql query to be executed on db ,database: DB_Name
-    Output:DataFrame
-    """
-    conn = connect_to_db(database)
-    cursor = conn.cursor()
-    cursor.execute(query)
-    data = pd.DataFrame(cursor.fetchall())
-    if get_no_of_rows(data):
-        data.columns = [x[0] for x in cursor.description]
-        cursor.close()
-        return data
-    else:
-        cursor.close()
-        return pd.DataFrame()
-
 def get_df_rows(df):
     #input: takes a pandas.DataFrame type data.
     #output: return a integer with the number of rows.
     return len(df.index)
-
 
 def get_today_datetime(timezone, date=False):
     #input:timezone (String) ist or utc,date: True or False(default)
