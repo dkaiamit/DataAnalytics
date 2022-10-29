@@ -1,6 +1,7 @@
 #importing libraries
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 def create_s3_object():    
     creds = get_creds()
